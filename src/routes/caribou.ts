@@ -14,7 +14,11 @@ const router: Router = Router();
 moment.locale('Thai');
 
 router.get('/', async (req: Request, res: Response) => {
+<<<<<<< HEAD
     console.log("data 999");
+=======
+    console.log("datatest");
+>>>>>>> 4a24c1659d9e6f26082f0df5b8bb2707f925e6c8
     try {
 
         console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
