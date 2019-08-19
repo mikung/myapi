@@ -8,7 +8,7 @@ npm i ts-node -g
 ```
 
 ```
-git clone https://github.com/siteslave/ts-node-express myApi
+git clone https://github.com/mikung/myapi.git myApi
 cd myApi
 npm i
 ```
