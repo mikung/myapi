@@ -93,7 +93,7 @@ router.get('/getHospcodeName', async (req: Request, res: Response) => {
     }
 });
 router.get('/getDb2', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     // let hosname = req.query.hosname;
     try {
         let rs: any = await departmentModel.getDb2(db);

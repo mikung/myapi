@@ -193,7 +193,7 @@ export class Api_hygge {
           WHERE
             rx_status = 'CF'
             AND department = ?
-          ORDER BY time_update2 DESC
+          ORDER BY time_update4 DESC
                    LIMIT 5
           ;
         `, department);
@@ -339,6 +339,13 @@ export class Api_hygge {
         return db.raw(`select * from hics_package where id = 1`);
     }
 
+    updateDeviceToken(db:Knex,cid:any,token:any){
+      return db('hygge_citizen').where('cid',cid).update({device_token: token});
+    }
+
+    getDeviceToken(db:Knex, cid: any){
+      return db.select('device_token').from('hygge_citizen').where('cid',cid);
+  }
 
 
 

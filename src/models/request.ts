@@ -2,37 +2,37 @@ import * as Knex from 'knex';
 
 export class RequestModel {
 
-    // saveRequest(db: Knex, data: any) {
-    //   return db('requests')
-    //     .insert(data);
-    // }
+  // saveRequest(db: Knex, data: any) {
+  //   return db('requests')
+  //     .insert(data);
+  // }
 
-    getAppointment(db: Knex, cid: any) {
-        return db('hygge_appointment')
-            .leftJoin('hygge_hospcode', 'hygge_appointment.app_hospcode', 'hygge_hospcode.hospcode')
-            .where('cid', cid)
-            .andWhere('app_date', '<', 'Date.now()')
-            .orderBy('app_date', 'desc')
-    }
+  getAppointment(db: Knex, cid: any) {
+    return db('hygge_appointment')
+      .leftJoin('hygge_hospcode', 'hygge_appointment.app_hospcode', 'hygge_hospcode.hospcode')
+      .where('cid', cid)
+      .andWhere('app_date', '<', 'Date.now()')
+      .orderBy('app_date', 'desc')
+  }
 
-    getAllergy(db: Knex, cid: any) {
-        return db('hygge_allergy')
-            .select(['id','cid','name','report_date','allergy_item','allergy_symtom'])
-            .leftJoin('hygge_hospcode', 'hygge_allergy.report_hospcode', 'hygge_hospcode.hospcode')
-            .where('cid', cid)
-            .orderBy('report_date', 'desc')
-    }
+  getAllergy(db: Knex, cid: any) {
+    return db('hygge_allergy')
+      .select(['id', 'cid', 'name', 'report_date', 'allergy_item', 'allergy_symtom'])
+      .leftJoin('hygge_hospcode', 'hygge_allergy.report_hospcode', 'hygge_hospcode.hospcode')
+      .where('cid', cid)
+      .orderBy('report_date', 'desc')
+  }
 
-    getVisit(db: Knex, cid: any) {
-        return db('hygge_visit').select('hygge_visit.visit_id','hygge_visit.cid','hygge_visit.vn','hygge_visit.curdep_name','hygge_visit.vsttime'
-        ,'hygge_visit.vstdate','hygge_visit.maindep','hygge_visit.maindep_name','hygge_visit.hospcode','hygge_hospcode.name','hygge_hospcode.hosptype','hygge_hospcode.hos_detail')
-            .leftJoin('hygge_hospcode', 'hygge_visit.hospcode', 'hygge_hospcode.hospcode')
-            .where('cid', cid)
-            .orderBy('vstdate', 'desc')
-    }
+  getVisit(db: Knex, cid: any) {
+    return db('hygge_visit').select('hygge_visit.visit_id', 'hygge_visit.cid', 'hygge_visit.vn', 'hygge_visit.curdep_name', 'hygge_visit.vsttime'
+      , 'hygge_visit.vstdate', 'hygge_visit.maindep', 'hygge_visit.maindep_name', 'hygge_visit.hospcode', 'hygge_hospcode.name', 'hygge_hospcode.hosptype', 'hygge_hospcode.hos_detail')
+      .leftJoin('hygge_hospcode', 'hygge_visit.hospcode', 'hygge_hospcode.hospcode')
+      .where('cid', cid)
+      .orderBy('vstdate', 'desc')
+  }
 
-    getProfile(db: Knex, cid: any) {
-        return db.raw(`SELECT hygge_citizen.cid                                                          as cid,
+  getProfile(db: Knex, cid: any) {
+    return db.raw(`SELECT hygge_citizen.cid                                                          as cid,
                               concat(hygge_citizen.pname, hygge_citizen.fname, ' ', hygge_citizen.lname) as ptname,
                               hygge_citizen.birthday                                                    as birthday,
                               (year (CURDATE())- year (hygge_citizen.birthday))                         as age,
@@ -49,10 +49,10 @@ export class RequestModel {
                               LEFT OUTER JOIN hygge_thaiaddress
                                               ON hygge_citizen.address_id = hygge_thaiaddress.addressid
                        WHERE hygge_citizen.cid = ? `, cid)
-    }
+  }
 
-    getAppointmentOlder(db: Knex, cid: any) {
-        return db.raw(`
+  getAppointmentOlder(db: Knex, cid: any) {
+    return db.raw(`
           SELECT
             a.*,
             b.name
@@ -65,10 +65,10 @@ export class RequestModel {
           ORDER BY
             app_date DESC
         `, cid)
-    }
+  }
 
-    getAppointmentNew(db: Knex, cid: any) {
-        return db.raw(`
+  getAppointmentNew(db: Knex, cid: any) {
+    return db.raw(`
           SELECT
             a.*,
             b.name
@@ -81,9 +81,9 @@ export class RequestModel {
           ORDER BY
             app_date ASC
         `, cid)
-    }
-    getAppointmentNew1(db: Knex, cid: any) {
-        return db.raw(`
+  }
+  getAppointmentNew1(db: Knex, cid: any) {
+    return db.raw(`
           SELECT
             a.*,
             b.name
@@ -97,10 +97,10 @@ export class RequestModel {
             app_date ASC
           limit 1
         `, cid)
-    }
+  }
 
-    getAppointmentHospcode(db: Knex, cid: any) {
-        return db.raw(`
+  getAppointmentHospcode(db: Knex, cid: any) {
+    return db.raw(`
           SELECT
             a.app_hospcode,
             b.name
@@ -114,34 +114,34 @@ export class RequestModel {
             a.app_hospcode,
             b.name
         `, cid)
-    }
+  }
 
-    getHospcode(db: Knex) {
-        return db.raw(`
+  getHospcode(db: Knex) {
+    return db.raw(`
           SELECT hospcode,name
           FROM hygge_hospcode
           WHERE hospital_type_id NOT IN ('1', '2', 'NULL')
     
         `,)
-    }
+  }
 
-    getDepartments(db: Knex, hospcode: any) {
-        return db.raw(`
+  getDepartments(db: Knex, hospcode: any) {
+    return db.raw(`
           SELECT hospcodde,department_name,department_id
           FROM hygge_que_department
           WHERE hospcodde = ?
         `, hospcode)
-    }
-    getHospcodeName(db: Knex,hosname: any) {
-        return db.raw(`
+  }
+  getHospcodeName(db: Knex, hosname: any) {
+    return db.raw(`
           SELECT hospcode,name
           FROM hygge_hospcode
           WHERE hospital_type_id NOT IN ('1', '2', 'NULL') and name like ?
           LIMIT 15
-        `,'%'+hosname+'%')
-    }
-    getAd(db: Knex) {
-        return db.raw(`
+        `, '%' + hosname + '%')
+  }
+  getAd(db: Knex) {
+    return db.raw(`
           SELECT
             ad_id,
                  path,
@@ -153,20 +153,54 @@ export class RequestModel {
           ORDER BY
             ad_id DESC
         `);
-    }
+  }
 
-    getOldpassword(db: Knex,cid: any,oldpassword: any){
-        return db.raw(`
+  getOldpassword(db: Knex, cid: any, oldpassword: any) {
+    return db.raw(`
             SELECT count(*) as 'c' 
             FROM hygge_citizen
             WHERE cid = ? and passcode = ?
-        `,[cid,oldpassword]);
-    }
+        `, [cid, oldpassword]);
+  }
 
-    updatePassword(db: Knex, cid: any, newpassword: any){
-        return db('hygge_citizen').where('cid' ,'=',cid).update({passcode: newpassword});
-    }
+  updatePassword(db: Knex, cid: any, newpassword: any) {
+    return db('hygge_citizen').where('cid', '=', cid).update({ passcode: newpassword });
+  }
 
+  getProvince(db: Knex) {
+    return db.raw(`
+      SELECT
+      h.chwpart,
+      p.chwname 
+    FROM
+      Report_Que_Today AS r
+      INNER JOIN hygge_hospcode AS h ON r.hospcode = h.hospcode
+      INNER JOIN province AS p ON h.chwpart = p.chwpart 
+    GROUP BY
+      h.chwpart,
+      p.chwname 
+    ORDER BY
+      p.chwname ASC
+      `);
+  }
+
+  getProvinceHospital(db: Knex,province:any) {
+    return db.raw(`
+    SELECT
+    r.hospcode,
+    r.name,
+    p.chwpart,
+    r.\`count(hygge_que.id)\` AS countQue 
+  FROM
+    Report_Que_Today AS r
+    INNER JOIN hygge_hospcode AS h ON r.hospcode = h.hospcode
+    LEFT OUTER JOIN province AS p ON h.chwpart = p.chwpart 
+    
+    where p.chwpart = ?
+  ORDER BY
+    r.name ASC
+      `,province);
+  }
 
 
 

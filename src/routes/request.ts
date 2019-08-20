@@ -132,7 +132,7 @@ router.get('/getHospcodeName', async (req: Request, res: Response) => {
 });
 
 router.get('/getAd', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let cid = req.decoded.cid;
     console.log(cid);
     try {

@@ -1,6 +1,7 @@
 /// <reference path="../typings.d.ts" />
 
 require('dotenv').config();
+var mqtt = require('mqtt');
 
 import * as path from 'path';
 import * as logger from 'morgan';
@@ -132,6 +133,16 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     req.db = db;
     req.db2 = db_hygge;
     req.db3 = db_hygge_replica;
+    next();
+});
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+    const client = mqtt.connect(`mqtt://${process.env.MQTT_HOST}`,{
+        clientId: 'hygge_api_client-' + Math.floor(Math.random() * 1000000),
+        username: process.env.MQTT_USER,
+        password: process.env.MQTT_PASSWORD
+    });
+    req.mqttClient = client;
     next();
 });
 

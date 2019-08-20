@@ -20,6 +20,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.26",
     "morgan": "^1.9.1",
+    "mqtt": "^3.0.0",
     "mysql": "^2.15.0",
     "node-gcm": "^1.0.2",
     "serve-favicon": "^2.5.0"

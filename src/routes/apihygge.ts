@@ -25,7 +25,7 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 router.get('/getDb2', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     // let hosname = req.query.hosname;
     try {
         let rs: any = await apiHyggeModel.getDb2(db);
@@ -36,7 +36,7 @@ router.get('/getDb2', async (req: Request, res: Response) => {
 });
 
 router.get('/getHyggeHosQue', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     // let hosname = req.query.hosname;
     try {
         let rs: any = await apiHyggeModel.getHyggeHosQue(db);
@@ -47,7 +47,7 @@ router.get('/getHyggeHosQue', async (req: Request, res: Response) => {
 });
 
 router.get('/getHyggeDepartmentQue', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let hospcode = req.query.hospcode;
     try {
         let rs: any = await apiHyggeModel.getHyggeDepartmentQue(db, hospcode);
@@ -58,7 +58,7 @@ router.get('/getHyggeDepartmentQue', async (req: Request, res: Response) => {
 });
 
 router.get('/getHyggeQueDepartment', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let hospcode = req.query.hospcode;
     try {
         let rs: any = await apiHyggeModel.getHyggeQueDepartment(db, hospcode);
@@ -69,7 +69,7 @@ router.get('/getHyggeQueDepartment', async (req: Request, res: Response) => {
 });
 
 router.get('/getHyggeQueDepartmentId', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     try {
         let rs: any = await apiHyggeModel.getHyggeQueDepartmentId(db, department);
@@ -80,7 +80,7 @@ router.get('/getHyggeQueDepartmentId', async (req: Request, res: Response) => {
 });
 
 router.get('/getHyggeQueDepartmentQue', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let hospcode = req.query.hospcode;
     try {
         let rs: any = await apiHyggeModel.getHyggeQueDepartmentQue(db, hospcode);
@@ -92,7 +92,7 @@ router.get('/getHyggeQueDepartmentQue', async (req: Request, res: Response) => {
 
 
 router.get('/getHyggeHospName', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let hosname = req.query.hosname;
     try {
         let rs: any = await apiHyggeModel.getHyggeHospName(db, hosname);
@@ -103,7 +103,7 @@ router.get('/getHyggeHospName', async (req: Request, res: Response) => {
 });
 
 router.get('/getCountRegisterOnline', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     let date = req.query.date;
     try {
@@ -115,7 +115,7 @@ router.get('/getCountRegisterOnline', async (req: Request, res: Response) => {
 });
 
 router.get('/getDSTCF', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     let date = req.query.date;
     try {
@@ -127,7 +127,7 @@ router.get('/getDSTCF', async (req: Request, res: Response) => {
 });
 
 router.get('/getVSTCF', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     let date = req.query.date;
     try {
@@ -138,7 +138,7 @@ router.get('/getVSTCF', async (req: Request, res: Response) => {
     }
 });
 router.get('/getSSTCF', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     let date = req.query.date;
     try {
@@ -149,7 +149,7 @@ router.get('/getSSTCF', async (req: Request, res: Response) => {
     }
 });
 router.get('/getRSTCF', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     let date = req.query.date;
     try {
@@ -160,7 +160,7 @@ router.get('/getRSTCF', async (req: Request, res: Response) => {
     }
 });
 router.get('/getDSTRQ', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     let date = req.query.date;
     try {
@@ -171,7 +171,7 @@ router.get('/getDSTRQ', async (req: Request, res: Response) => {
     }
 });
 router.get('/getVSTRQ', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
     let date = req.query.date;
     try {
@@ -182,7 +182,7 @@ router.get('/getVSTRQ', async (req: Request, res: Response) => {
     }
 });
 router.get('/getSSTRQ', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
 
     let date = req.query.date;
@@ -194,7 +194,7 @@ router.get('/getSSTRQ', async (req: Request, res: Response) => {
     }
 });
 router.get('/getRSTRQ', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     let department = req.query.department;
 
     let date = req.query.date;
@@ -207,7 +207,7 @@ router.get('/getRSTRQ', async (req: Request, res: Response) => {
 });
 
 router.get('/getAd', async (req: Request, res: Response) => {
-    let db = req.db2;
+    let db = req.db3;
     try {
         let rs: any = await requestModel.getAd(db);
         res.send({ ok: true, rows: rs[0] })
@@ -241,7 +241,7 @@ router.post('/insque', async (req: Request, res: Response) => {
 
     try {
         // await apiHyggeModel.saveInsQue(req.db, data);
-        let rs: any = await apiHyggeModel.chkQue(req.db2, department, date_appointment);
+        let rs: any = await apiHyggeModel.chkQue(req.db3, department, date_appointment);
         data.qid = rs[0][0]['qid'] + 1;
         await apiHyggeModel.saveInsQue(req.db2, data);
         res.send({ok: true, rows: data, code: HttpStatus.OK});
@@ -249,5 +249,49 @@ router.post('/insque', async (req: Request, res: Response) => {
         res.send({ok: false, error: error.message, code: HttpStatus.OK});
     }
 
+});
+
+router.get('/getProvince', async (req: Request, res: Response) => {
+    let db = req.db3;
+    try {
+        let rs: any = await requestModel.getProvince(db);
+        res.send({ ok: true, rows: rs[0] })
+    } catch (error) {
+        res.send({ ok: false, error: error.message })
+    }
+});
+
+router.get('/getProvinceHospital', async (req: Request, res: Response) => {
+    let db = req.db3;
+    let province = req.query.province;
+    try {
+        let rs: any = await requestModel.getProvinceHospital(db,province);
+        res.send({ ok: true, rows: rs[0] })
+    } catch (error) {
+        res.send({ ok: false, error: error.message })
+    }
+});
+
+router.post('/updateDeviceToken', async(req:Request,res: Response) =>{
+    let db = req.db;
+    let cid = req.body.cid;
+    let token = req.body.token;
+    try{
+        let rs: any = await apiHyggeModel.updateDeviceToken(db,cid,token);
+        res.send({ok:true,rows:rs});
+    }catch(error){
+        res.send({ok:false,error:error.message})
+    }
+});
+
+router.get('/getDeviceToken', async(req:Request,res: Response) =>{
+    let db = req.db;
+    let cid = req.query.cid;
+    try{
+        let rs: any = await apiHyggeModel.getDeviceToken(db,cid);
+        res.send({ok:true,rows:rs});
+    }catch(error){
+        res.send({ok:false,error:error.message})
+    }
 });
 export default router;
