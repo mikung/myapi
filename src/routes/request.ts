@@ -51,6 +51,8 @@ router.get('/getProfile', async (req: Request, res: Response) => {
   let cid = req.decoded.cid;
   try {
     let rs: any = await requestModel.getProfile(db, cid);
+    console.log('mikung');
+    console.log(rs);
     res.send({ ok: true, rows: rs[0] })
   } catch (error) {
     res.send({ ok: false, error: error.message })

@@ -19,7 +19,7 @@ export class Login {
   // }
   doLogin(db: Knex, username: string, password: string) {
     return db('hygge_citizen')
-      .select('cid', 'pname', 'fname', 'lname', 'gender', 'telecom', 'active')
+      .select('cid', 'pname', 'fname', 'lname', 'gender', 'telecom', 'active', 'favhos1', 'favhos2', 'favhos3')
       .where('cid', username)
       .where('passcode', password)
       .limit(1);

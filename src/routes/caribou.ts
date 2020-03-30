@@ -19,7 +19,7 @@ router.get('/', async (req: Request, res: Response) => {
 
     try {
 
-        console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
+        console.log(moment().add(7,'hours').format('YYYY-MM-DD HH:mm:ss'));
         res.send({ok: true, rows: 'Hello Caribou'});
     } catch (error) {
         res.send({ok: false, error: error.message});
@@ -37,7 +37,7 @@ router.post('/caribou_data', async (req: Request, res: Response) => {
     let temperature = req.body.temperature;
     let moisture = req.body.moisture;
     let station = req.body.station;
-    let update_timestamp = moment().format('YYYY-MM-DD HH:mm:ss');
+    let update_timestamp = moment().add(7,'hours').format('YYYY-MM-DD HH:mm:ss');
 
 
     let data: any = {};
@@ -59,7 +59,8 @@ router.get('/caribou_data', async (req: Request, res: Response) => {
     let temperature = req.query.temperature;
     let moisture = req.query.moisture;
     let station = req.query.station;
-    let update_timestamp = moment().format('YYYY-MM-DD HH:mm:ss');
+    let update_timestamp = moment().add(7,'hours').format('YYYY-MM-DD HH:mm:ss');
+    
 
 
     console.log('time');

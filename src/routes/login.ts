@@ -64,6 +64,9 @@ router.post('/loginhygge', async (req: Request, res: Response) => {
                 cid: rs[0].cid,
                 active: rs[0].active,
                 gender: rs[0].gender,
+                favhos1: rs[0].favhos1,
+                favhos2: rs[0].favhos2,
+                favhos3: rs[0].favhos3,
                 tel: rs[0].telecom
             }
 

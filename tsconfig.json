@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "strict": false,
     "removeComments": true,
+    "outDir": "dist",
+    "noImplicitAny": false,
+    "sourceRoot": "src",
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "sourceMap": true,
     "rootDir": "src"
   },

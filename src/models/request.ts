@@ -42,7 +42,9 @@ export class RequestModel {
                               hygge_pttype.name                                                          as pttypename,
                               hygge_citizen.address_name                                                 as AddressDetail1,
                               hygge_thaiaddress.full_name                                                as AddressDetail2,
-                              hygge_citizen.address_postal                                               as AddressPostal
+                              hygge_citizen.address_postal                                               as AddressPostal,
+                              hygge_citizen.favhos1 as favhos1,
+                              hygge_citizen.favhos3 as favhos3
                        FROM hygge_citizen
                               LEFT OUTER JOIN hygge_pttype
                                               ON hygge_citizen.pttype = hygge_pttype.pttype
@@ -95,7 +97,7 @@ export class RequestModel {
             AND a.app_date > DATE ( now( ) )
           ORDER BY
             app_date ASC
-          limit 1
+          
         `, cid)
   }
 

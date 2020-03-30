@@ -39,8 +39,8 @@ app.set('view engine', 'ejs');
 //uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname,'../public','favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json({limit: '5mb'}));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: false,limit: '50mb'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -87,9 +87,9 @@ let db = Knex({
             conn.query('SET NAMES utf8', (err) => {
                 done(err, conn);
             });
-            conn.query('SET time_zone = Asia/Bangkok', (err) => {
-                done(err,conn);
-            });
+            // conn.query('SET time_zone = Asia/Bangkok', (err) => {
+            //     done(err,conn);
+            // });
         }
     },
 });
@@ -138,7 +138,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     const client = mqtt.connect(`mqtt://${process.env.MQTT_HOST}`,{
-        clientId: 'hygge_api_client-' + Math.floor(Math.random() * 1000000),
+        // clientId: 'hygge_api_client-' + Math.floor(Math.random() * 1000000),
+        clientId: 'hygge_api_client-hygge',
         username: process.env.MQTT_USER,
         password: process.env.MQTT_PASSWORD
     });
