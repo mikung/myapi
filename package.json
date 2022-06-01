@@ -28,7 +28,7 @@
     "mysql": "^2.18.1",
     "node-gcm": "^1.0.2",
     "serve-favicon": "^2.5.0",
-    "sharp": "^0.25.2"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "@types/body-parser": "1.19.0",
